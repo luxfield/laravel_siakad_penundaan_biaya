@@ -3,6 +3,13 @@
 # laravel_siakad_penundaan_biaya
 aplikasi untuk penundaan biaya kuliah di universitas
 
+# Tech Stack
+1. PHP 8.1 keatas
+2. Mysql
+3. AdminLTE (template design)
+
+1. untuk menggunakan aplikasi lakukan clean session agar tidak terjadi _error session not found_ dengan cara :
+ - ```php artisan config:cache```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
