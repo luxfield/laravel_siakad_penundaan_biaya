@@ -28,7 +28,8 @@
                 <tr style="display: flex; justify-content: center;">
                     <td style="text-align: center;">
                         <div style="margin-top: 15px;">
-                            <img src="https://portal.unsada.ac.id/gate/img/header/logo.png" alt="logo unsada" width="100px" height="100px">
+                            <img src="https://portal.unsada.ac.id/gate/img/header/logo.png" alt="logo unsada"
+                                width="100px" height="100px">
                         </div>
                     </td>
                     <td style="text-align: center;">
@@ -114,24 +115,32 @@ margin-top: 5px;
 margin-bottom: 5px;
 margin-left: 3px;
 ">Mengajukan Permohonan Penundaan pembayaran biaya kuliah sebesar</p>
+@php
+    $fmt = numfmt_create('id_ID', NumberFormatter::CURRENCY);
+@endphp
 <table>
     <tr>
         <td>Jumlah Tunggakan</td>
-        <td> Rp. {{ $total_hutang  }},-</td>
+        <td> {{ numfmt_format_currency($fmt, $total_hutang, "IDR") }},-</td>
     </tr>
     <tr>
         <td>Jumlah Dibayarkan</td>
-        <td>Rp. 1.xxx.xxx,-</td>
+        <td>{{ numfmt_format_currency($fmt, $tunggakan_50_persen, "IDR") }},-</td>
     </tr>
 </table>
 <p>Sisa pembayaran</p>
 <ol value="1">
-    <li>Jumlah pembayaran Rp. {{$tunggakan_50_persen}},- pada tanggal ...</li>
-    @for ($i = 0; $i < count($jumlah_cicilan); $i++) <li>Jumlah pembayaran {{$jumlah_cicilan[$i]}} pada tanggal ...</li>
-        @endfor
+    <li>Jumlah pembayaran {{ numfmt_format_currency($fmt, $tunggakan_50_persen, "IDR") }},- pada
+        tanggal ...</li>
+    @for ($i = 0; $i < count($jumlah_cicilan); $i++)
+        <li>Jumlah pembayaran {{ numfmt_format_currency($fmt, $jumlah_cicilan[$i], "IDR") }},- pada tanggal ...</li>
+    @endfor
 </ol>
 <p>Permohonan tersebut kami ajukan dengan alasan :</p>
-<p>__________________________________________________________________________________</p>
+<p> <i>
+        {{$alasan}}
+    </i>
+</p>
 <p>Apabila sampai tanggal tersebut tidak menepati janji dan tidak melunasi pembayaran. Bersedia dikenakan sanksi
     administrasi dan akademik yang berlaku di lingkungan Universitas Darma Persada</p>
 <p></p>

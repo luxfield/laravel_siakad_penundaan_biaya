@@ -234,7 +234,6 @@ class UserController extends Controller
 
     public function doAdd(Request $request)
     {
-
         return $this->previewPDF($request);
         // $nama = $request->input("nama");
         // $tanggal = $request->input("tanggal");
@@ -884,11 +883,13 @@ class UserController extends Controller
     public function previewPDF(Request $request)
     {
         // dd( $request);
+        $alasan = $request->input('alasan');
         $data = DB::table('request_postpone_agreement')->where('request_postpone_agreement.id', '=', $request->parent_id)->join('users', 'users.id', '=', 'request_postpone_agreement.name')->select('request_postpone_agreement.*', 'users.name')->get();
         $get_data_user = DB::table('users')->where('status','=', $request->session()->get('user'))->get();
         $cek_user = DB::table('detail_user')->where('id','=', $get_data_user[0]->id)->get();
         $tunggakan_50_persen = $data[0]->total_hutang / 2;
         return response()->view('dana_pdf', [
+
             'add' => route('ajukan surat'),
             'all' => route('user index'),
             'inbox' => route('user inbox'),
@@ -910,7 +911,8 @@ class UserController extends Controller
             "telepon_rumah_orang_tua_mahasiswa" => $cek_user[0]->telepon_orang_tua,
             "pekerjaan_jabatan_orang_tua_mahasiswa" => $cek_user[0]->pekerjaan_orang_tua,
             "alamat_kantor_orang_tua_mahasiswa" => $cek_user[0]->alamat_kantor_orang_tua,
-            "jumlah_cicilan" => $request->jumlah_cicilan
+            "jumlah_cicilan" => $request->jumlah_cicilan,
+            "alasan" => $alasan
 
         ]);
     }

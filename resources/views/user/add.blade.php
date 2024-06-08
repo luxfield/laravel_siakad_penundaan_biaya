@@ -97,6 +97,10 @@
                                     @endfor
                                     </ol>
                                 </div>
+                                <div class="form-group">
+                                    <label for="alasan">Alasan </label>
+                                    <textarea class="form-control" name="alasan" id="alasan" rows="4" maxlength="500" required></textarea>
+                                </div>
                                 <!-- <div class="form-group">
                                     <label for="exampleInputFile">Input proposal</label>
                                     <div class="input-group">

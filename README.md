@@ -8,7 +8,7 @@ aplikasi untuk penundaan biaya kuliah di universitas
 2. Mysql
 3. AdminLTE (template design)
 
-1. untuk menggunakan aplikasi lakukan clean session agar tidak terjadi _error session not found_ dengan cara :
+## untuk menggunakan aplikasi lakukan clean session agar tidak terjadi _error session not found_ dengan cara :
  - ```php artisan config:cache```
 ## License
 
